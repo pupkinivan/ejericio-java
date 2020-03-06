@@ -36,5 +36,5 @@ Las consignas específicas a cumplir son:
     1. compartir el código en git (holis)
     1. hostear la API REST en un servicio de nube gratuito e indicar la URL
 
-El servicio alojado de consulta se puede encontrar en https://ejercicio-java.herokuapp.com/getComision?marcaTarjeta=SQUA&monto=555 . Modificando la porción siguiente a ```marcaTarjeta``` se puede (sorpresa) elegir otra de las fabricantes de tarjetas y alterando ```monto```, lo propio. Dado que los servidores gratuitos de Heroku se apagan luego de determinado tiempo, si se quiere probar, escríbaseme.
+El servicio alojado de consulta se puede encontrar en https://ejercicio-java.herokuapp.com/getComision?marcaTarjeta=SQUA&monto=555 . El campo ```content``` dentro del JSON de respuesta a la consulta indica el monto de comisión en unidades $. Modificando la porción siguiente a ```marcaTarjeta``` se puede (sorpresa) elegir otra de las fabricantes de tarjetas y alterando ```monto```, lo propio. Dado que los servidores gratuitos de Heroku se apagan luego de determinado tiempo, si se quiere probar, escríbaseme.
 
