@@ -3,18 +3,12 @@ package com.example.restservice;
 import java.time.LocalDate;
 
 class CalcularComision {
-    // public final long id;
+
     public final float content;
 
     public CalcularComision (String marca, float monto) {
-        // this.id = id;
-        // this.content = content;
         this.content = getComision(marca, monto);
     }
-
-    // public getId() {return this.id;}
-
-    // public getContent(){return this.content;}
 
     public float getComision(String marca, float monto) {
         LocalDate today = LocalDate.now();
