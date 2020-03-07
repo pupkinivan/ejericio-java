@@ -38,8 +38,6 @@ Las consignas específicas a cumplir en el código son:
 
 # Resultados
 
-Las partes primera y segunda se pueden encontrar en el archivo `source/EjemploEjecutable.java`, que debe ser compilado.
+Las partes primera y segunda se pueden encontrar en el archivo `source/EjemploEjecutable.java`. En la fórmula de cálculo de la comisión de las tarjetas SQUA habría una contradicción con los porcentajes detallados, por lo que se modificó el código para calcularla como ```mes / año``` en su lugar.
 
 El servicio alojado de consulta fue programado a través de springBoot (código en `source/rest/`), construido con Apache Maven y se puede encontrar en https://ejercicio-java.herokuapp.com/getComision?marcaTarjeta=SQUA&monto=555 . El campo ```content``` dentro del JSON de respuesta a la consulta indica el monto de comisión en unidades $. Modificando la porción siguiente a ```marcaTarjeta``` se puede (sorpresa) elegir otra de las fabricantes de tarjetas y alterando ```monto```, lo propio. Dado que los servidores gratuitos de Heroku se apagan luego de determinado tiempo, si se quiere probar, escríbaseme.
-
-En la fórmula de cálculo de la comisión de las tarjetas SQUA habría una contradicción con los porcentajes detallados, por lo que se modificó el código para calcularla como ```mes / año``` en su lugar.
