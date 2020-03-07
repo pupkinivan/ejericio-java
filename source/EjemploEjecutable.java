@@ -2,15 +2,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-/*   Argumentos para crear una tarjeta deben ser:
- * 1. marca
- * 2. número de tarjeta
- * 3. nombre de dueño de tarjeta
- * 4. fecha de vencimiento
- * 
- * 
-
-*/
 
 class EjemploEjecutable {
     public static void main(String[] args){
@@ -32,6 +23,9 @@ class EjemploEjecutable {
 
         // 5. obtener tasa de operación a través de marca e importe
         System.out.println(String.format("La tasa de operación para Ricardito (fuere la operación válida) sería de $%f.", opereta.getCharge()));
+
+        // Parte 2. Cobro
+
     }
 }
 
@@ -40,25 +34,30 @@ interface Card {
 	String holderName = "";
 	String cardNumber = "";
     LocalDate expirationDate = null;
+}
 
-    // abstract String setCardBrand();
-    // abstract String setHolderName();
-    // abstract String setCardNumber();
-    // abstract Date setExpirationDate();
-    
-    // default String getCardBrand(){
-    //     return cardBrand;
-    // }
-    // default String getHolderName(){
-    //     return holderName;
-    // }
-    // default String getCardNumber(){
-    //     return cardNumber;
-    // }
-    // default LocalDate getExpirationDate(){
-    //     return expirationDate;
-    // }
+class ImpresoraException extends Exception {
+    public ImpresoraException(String mensaje) {
+        super(mensaje);
+    }
+}
 
+class EnvioInfoTCException extends Exception {
+    public EnvioInfoTCException(String mensaje) {
+        super(mensaje);
+    }
+}
+
+class InformarPagoException extends Exception {
+    public InformarPagoException(String mensaje) {
+        super(mensaje);
+    }
+}
+
+class ActualizarSaldoException extends Exception {
+    public ActualizarSaldoException(String mensaje) {
+        super(mensaje);
+    }
 }
 
 class Operacion {
@@ -89,9 +88,43 @@ class Operacion {
     // private void setBrand(String marca) {
     //     this.cardBrand = marca;
     // }
+
+    public void cobrar() {
+        try {
+            imprimirFactura();
+            enviarInfoTC();
+            informarPago();
+            actualizarSaldo();
+        } catch (ImpresoraException e_imp) {
+            e_imp.printStackTrace();
+        } catch (EnvioInfoTCException e_tc) {
+            e_tc.printStackTrace();
+        } catch (InformarPagoException e_infopago) {
+            e_infopago.printStackTrace();
+        } catch (ActualizarSaldoException e_actsaldo) {
+            e_actsaldo.printStackTrace();
+        }
+    }
+
+    private void imprimirFactura() throws ImpresoraException {
+        System.out.println("Todo trancu en la impresora.");
+    }
+
+    private void enviarInfoTC() throws EnvioInfoTCException {
+        System.out.println("Envío de información de tarjeta enviado correctamente.");
+    }
+
+    private void informarPago() throws InformarPagoException {
+        System.out.println("El pago ha sido informado correctamente.");
+    }
+
+    private void actualizarSaldo() throws ActualizarSaldoException {
+        System.out.println("El saldo ha sido actualizado correctamente.");
+    }
 }
 
 class Tarjeta implements Card {
+
     private String cardBrand;
     private String holderName;
     private String cardNumber;
@@ -177,18 +210,5 @@ class Tarjeta implements Card {
                 return 0.0f;
         }
     }
-
-    // Ver si funcionan los defaults de la interfaz
-    // default String getCardBrand(){
-    //     return cardBrand;
-    // }
-    // default String getHolderName(){
-    //     return holderName;
-    // }
-    // default String getCardNumber(){
-    //     return cardNumber;
-    // }
-    // default LocalDate getExpirationDate(){
-    //     return expirationDate;
-    // }
 }
+
